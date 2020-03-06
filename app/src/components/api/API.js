@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const URL = "https://api.github.com/graphql";
-// GitHub token HRISTINA STAYKOVA = e0416664141796ae6b44fc0504c22b34642dcf26
 
 function createAxiosClient(token) {
   return axios.create({
