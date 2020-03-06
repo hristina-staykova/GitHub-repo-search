@@ -6,27 +6,28 @@ import { Card } from "antd";
 
 const { Panel } = Collapse;
 
-function Acordion({ openIssues }) {
-  if (!openIssues) {
+function Acordion({ issues, issueState }) {
+  if (!issues) {
     return <div>No results to display - enter search parameters</div>;
   }
 
   return (
     <>
       <Collapse accordion>
-        {openIssues
-          .filter(item => item.state === "OPEN")
-          .map((open, i) => (
-            <Panel key={i} header={open.title}>
-              <a href={open.url}>{open.url}</a>
-              <p>Created at: {open.createdAt}</p>
+        {issues
+          .filter(item => item.state === issueState)
+          .map((issue, i) => (
+            <Panel key={i} header={issue.title}>
+              <a href={issue.url}>{issue.url}</a>
+              <p>Created at: {issue.createdAt}</p>
+              <p>{issue.state}</p>
               <form>
                 <input type="text" placeholder="Search in comments..." />
               </form>
-              {open &&
-                open.comments &&
-                open.comments.nodes &&
-                open.comments.nodes.map((comment, i) => {
+              {issue &&
+                issue.comments &&
+                issue.comments.nodes &&
+                issue.comments.nodes.map((comment, i) => {
                   return (
                     <Card
                       size="small"
