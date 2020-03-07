@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, Input } from "antd";
 
 function Comments({ data }) {
   const [search, setSearch] = useState();
@@ -29,13 +30,14 @@ function Comments({ data }) {
 
   return (
     <>
-      <form>
-        <input
+      <p>Comments to this issue:</p>
+      <Form size="small" style={{ width: 250 }}>
+        <Input
           type="text"
           placeholder="Search in comments..."
           onChange={handleOnChange}
         />
-      </form>
+      </Form>
       <div>{showResults(data)}</div>
     </>
   );

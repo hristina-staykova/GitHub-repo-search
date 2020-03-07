@@ -20,7 +20,7 @@ function PullRequests({ pullRequests, errors }) {
           key={i}
         >
           <p>
-            Author: {item.author.login} {item.createdAt}
+            Author: {item.author.login} on {item.createdAt.substr(0, 10)}
           </p>
           <p>{item.bodyText}</p>
           <a href={item.url}>View on GitHub</a>

@@ -17,9 +17,11 @@ function Acordion({ issues, issueState }) {
           .filter(item => item.state === issueState)
           .map((issue, i) => (
             <Panel key={i} header={issue.title}>
-              <a href={issue.url}>{issue.url}</a>
-              <p>Created at: {issue.createdAt}</p>
+              <p>
+                Author: {issue.author.login} on {issue.createdAt.substr(0, 10)}
+              </p>
               <Comments data={issue.comments.nodes} />
+              <a href={issue.url}>View on GitHub</a>
             </Panel>
           ))}
       </Collapse>

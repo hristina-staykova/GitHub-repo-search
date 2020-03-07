@@ -1,6 +1,6 @@
 import React from "react";
 import PullRequests from "./PullRequests";
-import Acordion from "./Acordion";
+import Acordion from "./Issues";
 import { Tabs } from "antd";
 import "antd/dist/antd.css";
 
