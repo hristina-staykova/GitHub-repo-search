@@ -3,7 +3,7 @@ import API from "./api/API.js";
 import Tabs from "../components/Tabs";
 import { Form, Input, Button } from "antd";
 
-function GetUserData() {
+function GetData() {
   const [repoName, setRepoName] = useState();
   const [token, setToken] = useState();
   const [repoOwner, setRepoOwner] = useState();
@@ -12,12 +12,12 @@ function GetUserData() {
     openIssues: [],
     errors: []
   });
+  const [state, setState] = useState({ loading: false, iconLoading: false });
 
-  const handleFormSubmit = () => {
+  function handleFormSubmit() {
     setToken(token);
     setRepoName(repoName);
     setRepoOwner(repoOwner);
-    console.log(repoOwner, repoName, token);
 
     API.getRepoData(repoName, repoOwner, token).then(res => {
       const repo =
@@ -29,8 +29,13 @@ function GetUserData() {
         pullRequests: repo.pullRequests ? repo.pullRequests.nodes : [],
         issues: repo.issues ? repo.issues.nodes : []
       });
+      setState({ loading: false });
     });
-  };
+  }
+
+  function enterLoading() {
+    setState({ loading: true });
+  }
 
   return (
     <>
@@ -45,7 +50,13 @@ function GetUserData() {
           <Input onChange={e => setToken(e.target.value)} required />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" shape="round">
+          <Button
+            type="primary"
+            htmlType="submit"
+            shape="round"
+            loading={state.loading}
+            onClick={enterLoading}
+          >
             Search
           </Button>
         </Form.Item>
@@ -55,4 +66,4 @@ function GetUserData() {
   );
 }
 
-export default GetUserData;
+export default GetData;

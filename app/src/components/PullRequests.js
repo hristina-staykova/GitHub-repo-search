@@ -6,7 +6,6 @@ function PullRequests({ pullRequests, errors }) {
     return <div>{errors[0].message}</div>;
   }
   if (!pullRequests.length) {
-    // Initial rendering
     return <div>No results to display - enter search parameters</div>;
   }
 
@@ -24,7 +23,7 @@ function PullRequests({ pullRequests, errors }) {
             Author: {item.author.login} {item.createdAt}
           </p>
           <p>{item.bodyText}</p>
-          <a href={item.url}>{item.url}</a>
+          <a href={item.url}>View on GitHub</a>
         </Card>
       ))}
     </div>

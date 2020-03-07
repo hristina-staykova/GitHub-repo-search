@@ -3,35 +3,30 @@ import PullRequests from "./PullRequests";
 import Acordion from "./Acordion";
 import { Tabs } from "antd";
 import "antd/dist/antd.css";
-import "../index.css";
 
-function TabsView(props) {
+function TabsView({ githubData }) {
   const { TabPane } = Tabs;
-
-  function callback(key) {
-    console.log(key);
-  }
 
   return (
     <div style={{ margin: "50px 0" }}>
-      <Tabs onChange={callback} type="card">
+      <Tabs type="card">
         <TabPane tab="Pull Requests" key="1">
           <PullRequests
-            errors={props.githubData.errors}
-            pullRequests={props.githubData.pullRequests}
+            errors={githubData.errors}
+            pullRequests={githubData.pullRequests}
           />
         </TabPane>
         <TabPane tab="Open Issues" key="2">
           <Acordion
-            errors={props.githubData.errors}
-            issues={props.githubData.issues}
+            errors={githubData.errors}
+            issues={githubData.issues}
             issueState="OPEN"
           />
         </TabPane>
         <TabPane tab="Closed Issues" key="3">
           <Acordion
-            errors={props.githubData.errors}
-            issues={props.githubData.issues}
+            errors={githubData.errors}
+            issues={githubData.issues}
             issueState="CLOSED"
           />
         </TabPane>
