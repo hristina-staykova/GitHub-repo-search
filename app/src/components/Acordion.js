@@ -7,6 +7,31 @@ import { Card } from "antd";
 const { Panel } = Collapse;
 
 function Acordion({ issues, issueState }) {
+  const [search, setSearch] = useState();
+
+  function handleOnChange(e) {
+    setSearch(e.target.value);
+    console.log(search);
+  }
+
+  function showResults(comments) {
+    let commentsFiltered = comments.slice();
+    if (search) {
+      let toSearch = search.toLowerCase();
+      console.log(commentsFiltered);
+      commentsFiltered = comments.filter(element =>
+        element.bodyText.toLowerCase().includes(toSearch)
+      );
+      console.log("filtered array", commentsFiltered);
+    }
+    return commentsFiltered.map((item, i) => (
+      <div key={i}>
+        <p>{item.bodyText}</p>
+        <p>{item.author ? item.author.login : null}</p>
+      </div>
+    ));
+  }
+
   if (!issues) {
     return <div>No results to display - enter search parameters</div>;
   }
@@ -22,26 +47,13 @@ function Acordion({ issues, issueState }) {
               <p>Created at: {issue.createdAt}</p>
               <p>{issue.state}</p>
               <form>
-                <input type="text" placeholder="Search in comments..." />
+                <input
+                  type="text"
+                  placeholder="Search in comments..."
+                  onChange={handleOnChange}
+                />
               </form>
-              {issue &&
-                issue.comments &&
-                issue.comments.nodes &&
-                issue.comments.nodes.map((comment, i) => {
-                  return (
-                    <Card
-                      size="small"
-                      title={comment.title}
-                      style={{ margin: "5px 0px" }}
-                      key={i}
-                    >
-                      <div>
-                        <p>{comment.bodyText}</p>
-                        <p>{comment.author ? comment.author.login : null}</p>
-                      </div>
-                    </Card>
-                  );
-                })}
+              <div>{showResults(issue.comments.nodes)}</div>
             </Panel>
           ))}
       </Collapse>
