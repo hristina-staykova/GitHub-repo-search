@@ -16,7 +16,7 @@ Browser based React app that serarches for a given repository name and displays 
   
 - others:
 
-  - clicking on issue title displays extra information - author, created at, comments (author & text), URL, search form (through acordion component)
+  - clicking on an issue title displays extra information - author, created at, comments (author & text), URL, search form (through acordion component)
   
   - the user is able to search within the comments (search while typing)
   
@@ -36,7 +36,7 @@ Browser based React app that serarches for a given repository name and displays 
   
   - run "npm start"
   
-  - view app in the browser http://localhost:3000/
+  - view app in the browser - http://localhost:3000/
     
   
   or check the deployed app on Heroku - https://react-github-graphql.herokuapp.com/
