@@ -4,21 +4,23 @@ Browser based React app that serarches for a given repository name and displays 
 
 ### Requirements: 
 
-- the user should provide a repository name, its owner and user's GitHub personal token for authorization
+- the user should provide a repository name, its owner and user's GitHub personal token for authorization [X]
 
 - the app displays details about:
 
-  - pull requests - title, state, author, created at, description, URL
+  - pull requests - title, state, author, created at, description, URL [X]
   
-  - open issues - title, author, created at, comments (author & text), URL
+  - open issues - title, author, created at, comments (author & text), URL [X]
   
-  - closed issues - title, author, created at, comments (author & text), URL
+  - closed issues - title, author, created at, comments (author & text), URL [X]
+  
+  in a tab view [X]
   
 - others:
 
-  - clicking on an issue title displays extra information - author, created at, comments (author & text), URL, search form (through acordion component)
+  - clicking on an issue title displays extra information - author, created at, comments (author & text), URL, search form (through acordion component) [X]
   
-  - the user is able to search within the comments (search while typing)
+  - the user is able to search within the comments (search while typing) [X]
   
   ### Technologies used:
   
