@@ -56,7 +56,7 @@ function GetData() {
         </Form.Item>
         <Form.Item>
           <Button
-            type="primary"
+            type="danger"
             htmlType="submit"
             shape="round"
             loading={state.loading}
