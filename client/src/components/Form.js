@@ -19,18 +19,23 @@ function GetData() {
     setRepoName(repoName);
     setRepoOwner(repoOwner);
 
-    API.getRepoData(repoName, repoOwner, token).then(res => {
-      const repo =
-        res && res.data && res.data.data && res.data.data.repository
-          ? res.data.data.repository
-          : {};
-      setData({
-        errors: res.data && res.data.errors ? res.data.errors : null,
-        pullRequests: repo.pullRequests ? repo.pullRequests.nodes : [],
-        issues: repo.issues ? repo.issues.nodes : []
+    API.getRepoData(repoName, repoOwner, token)
+      .then(res => {
+        const repo =
+          res && res.data && res.data.data && res.data.data.repository
+            ? res.data.data.repository
+            : {};
+        setData({
+          errors: res.data && res.data.errors ? res.data.errors : null,
+          pullRequests: repo.pullRequests ? repo.pullRequests.nodes : [],
+          issues: repo.issues ? repo.issues.nodes : []
+        });
+        setState({ loading: false });
+      })
+      .catch(error => {
+        alert(error.response.data.message);
+        setState({ loading: false });
       });
-      setState({ loading: false });
-    });
   }
 
   function enterLoading() {

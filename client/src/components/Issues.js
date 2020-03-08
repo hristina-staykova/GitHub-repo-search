@@ -5,7 +5,11 @@ import Comments from "./Comments";
 
 const { Panel } = Collapse;
 
-function Acordion({ issues, issueState }) {
+function Acordion({ issues, issueState, errors }) {
+  if (errors && errors.length) {
+    return <div>{errors[0].message}</div>;
+  }
+
   if (!issues) {
     return <div>No results to display - enter search parameters</div>;
   }
