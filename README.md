@@ -36,4 +36,7 @@ Browser based React app that serarches for a given repository name and displays 
   
   - run "npm start"
   
+  - view app in the browser http://localhost:3000/
+    
+  
   or check the deployed app on Heroku - https://react-github-graphql.herokuapp.com/
